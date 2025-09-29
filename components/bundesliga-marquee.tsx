@@ -27,6 +27,10 @@ interface MatchData {
   }>
 }
 
+interface cardInterface {
+  className?: string;
+}
+
 export default function SCFreiburgMarquee() {
   const [freiburgData, setFreiburgData] = useState<TeamStanding | null>(null)
   const [currentMatchday, setCurrentMatchday] = useState<number>(0)
@@ -96,7 +100,7 @@ export default function SCFreiburgMarquee() {
 
   if (loading) {
     return (
-      <Card className="p-6">
+      <Card >
         <div className="flex items-center justify-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
           <span className="ml-2 text-muted-foreground">Lade SC Freiburg Daten...</span>
@@ -107,7 +111,7 @@ export default function SCFreiburgMarquee() {
 
   if (error) {
     return (
-      <Card className="p-6 border-destructive">
+      <Card>
         <div className="text-destructive text-center">
           <p className="font-semibold">Fehler beim Laden der Daten</p>
           <p className="text-sm mt-1">{error}</p>
@@ -118,7 +122,7 @@ export default function SCFreiburgMarquee() {
 
   if (!freiburgData) {
     return (
-      <Card className="p-6">
+      <Card>
         <div className="text-center text-muted-foreground">Keine Daten für SC Freiburg gefunden</div>
       </Card>
     )
