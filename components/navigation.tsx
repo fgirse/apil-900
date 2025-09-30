@@ -1,13 +1,13 @@
-import styles from '../styles';
-
-// Removed invalid function signature declaration
+"use client"
 
 import { useState } from "react"
 import { Button } from "../components/ui/button"
+// Update the import path if the file is located elsewhere, for example:
 import { Sheet, SheetContent, SheetTrigger } from "../components/ui/sheet"
+// Or create the file at components/ui/sheet.tsx if it does not exist.
 import { MenuIcon, ChevronDown } from "lucide-react"
 import { cn } from "../lib/utils"
-import { Menu, MenuButton, MenuItem, MenuItems, Transition } from "@headlessui/react"
+import { Menu, Transition } from "@headlessui/react"
 import { Fragment } from "react"
 
 const navigationItems = [
@@ -57,16 +57,16 @@ const navigationItems = [
   {
     name: "Team",
     href: "/team",
-    image: "/team-porthole-comic-style-people-group-icon.jpg",
+    image: "/Bullex",
   },
   {
     name: "Wohin",
     href: "/wohin",
-    image: "/wohin-porthole-comic-style-direction-arrow-icon.jpg",
+    image: "/Bulleye.svg",
   },
 ]
 
-export function Navigation() {
+export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -86,7 +86,7 @@ export function Navigation() {
               <div key={item.name}>
                 {item.dropdown ? (
                   <Menu as="div" className="relative">
-                    <MenuButton
+                    <Menu.Button
                       className={cn(
                         "flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md transition-all duration-200",
                         "text-muted-foreground hover:text-foreground hover:bg-accent/10",
@@ -103,7 +103,7 @@ export function Navigation() {
                       </div>
                       {item.name}
                       <ChevronDown className="w-4 h-4 ml-1 ui-open:rotate-180 transition-transform" />
-                    </MenuButton>
+                    </Menu.Button>
 
                     <Transition
                       as={Fragment}
@@ -114,15 +114,15 @@ export function Navigation() {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <MenuItems className="absolute top-full left-0 mt-1 w-48 bg-background border border-border rounded-md shadow-lg py-1 z-50 focus:outline-none">
+                      <Menu.Items className="absolute top-full left-0 mt-1 w-48 bg-background border border-border rounded-md shadow-lg py-1 z-50 focus:outline-none">
                         {item.dropdown.map((dropdownItem) => (
-                          <MenuItem key={dropdownItem.name}>
-                            {({ focus }) => (
+                          <Menu.Item key={dropdownItem.name}>
+                            {({ active }) => (
                               <a
                                 href={dropdownItem.href}
                                 className={cn(
                                   "block px-4 py-2 text-sm transition-colors",
-                                  focus
+                                  active
                                     ? "text-foreground bg-accent/10"
                                     : "text-muted-foreground hover:text-foreground hover:bg-accent/10",
                                 )}
@@ -130,9 +130,9 @@ export function Navigation() {
                                 {dropdownItem.name}
                               </a>
                             )}
-                          </MenuItem>
+                          </Menu.Item>
                         ))}
-                      </MenuItems>
+                      </Menu.Items>
                     </Transition>
                   </Menu>
                 ) : (
@@ -218,20 +218,3 @@ export function Navigation() {
     </nav>
   )
 }
-
-const StartStep = ({ text }) => (
-  <div className={`${styles.flexCenter} flex-row`}>
-    <div
-      className={`${styles.flexCenter} w-[70px] h-[70px] rounded-[24px] bg-[]`}
-    >
-      <p className="font-bold text-[3rem] text-white">
-        {"🎈"}
-      </p>
-    </div>
-    <p className="flex-1 ml-[30px] font-normal text-[18px] text-[#B0B0B0] leading-[32.4px]">
-      {text}
-    </p>
-  </div>
-);
-
-export default StartStep;

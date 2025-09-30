@@ -29,7 +29,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "components/Modale/Modale02.jsx", "components/MenuDrinks/Subheading/SubHeading.jsx", "components/MenuDrinks/index.jsx", "data/images.jsx", "constants/index.js", "components/bundesliga-table.tsx"  ],
+, "components/ui/button.tsx"  ],
   "exclude": [
     "node_modules"
   ]

@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Features2 from'../components/Feature2';
 import styles from '../styles';
 import { staggerContainer } from '../utils/motion';
-import { TypingText } from '../components';
+import { TypingText } from '../components/CustomTexts';
 
 const Philosophy = () => {
   const [active, setActive] = useState('world-2');

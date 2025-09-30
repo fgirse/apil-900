@@ -3,11 +3,13 @@
 import { motion } from 'framer-motion';
 import Modale04 from '../components/Modale/Modale04';
 import styles from '../styles';
-import { startingFeatures } from '../constants';
-import { StartSteps, TypingText } from '../components';
+import { startingFeatures} from'../constants/index'
+import { TypingText } from '../components/CustomTexts';
 import { staggerContainer, fadeIn, planetVariants } from '../utils/motion';
-const Event = () => (
-  <section id="section-events" className={`${styles.paddings} relative z-10`}>
+
+export default function Event () {
+  return (
+ <section id="section-events" className={`${styles.paddings} relative z-10`}>
     <motion.div
       variants={staggerContainer}
       initial="hidden"
@@ -34,11 +36,12 @@ const Event = () => (
         <h1 className="text-[2rem]">privater oder geschäftlicher Event?</h1>
         <div className="mb-[5vw] mt-[31px] flex flex-col max-w-[370px] gap-[24px]">
           {startingFeatures.map((feature, index) => (
-            <StartSteps
-              key={feature}
-              number={`${index < 10 ? '0' : ''} ${index + 1}`}
-              text={feature}
-            />
+            <div key={index} className="feature-item">
+              <span className="feature-index">
+                {index < 9 ? `0${index + 1}` : index + 1}
+              </span>
+              <span className="feature-text">{feature}</span>
+            </div>
           ))}
         </div>
         <Modale04/>
@@ -47,4 +50,6 @@ const Event = () => (
       </section>
 );
 
-export default Event;
+}
+ 
+
